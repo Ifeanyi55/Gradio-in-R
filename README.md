@@ -137,12 +137,12 @@ While [R/Shiny](https://shiny.posit.co/) remains the go-to framework for buildin
 
 Over time, more R gradio app examples, as code, will be added to this repository to explore the versatility and different use cases of gradio, all while coding in R. 
 
-If you would like to see an example of a gradio app built for a machine learning regression model, take a look inside the `Code` folder. Download the script and run it in your R editor or IDE. You may download the trained model on your computer in order to run the gradio app.
+If you would like to see an example of a gradio app built for a machine learning regression model, take a look inside the `Code` folder. Download the script and run it in your R editor or IDE. You may also download the trained model on your computer to run the gradio app if you do not wish to train the model afresh.
 
 ## **Contributing**
 If you would like to contribute to this repository, here are ways you can do that:
 - Raise an issue, if you find one
-- Share your R gradio projects
+- Contribute your R gradio projects
 - Suggest example R gradio projects
 
 
