@@ -135,7 +135,7 @@ Ngrok will generate a random url for your application, which you can share with 
 ## **Wrapping Up**
 While [R/Shiny](https://shiny.posit.co/) remains the go-to framework for building web applications in R, gradio can help with fast prototyping, and it can also be integrated into an R/Shiny project using the [gradio Python client](https://www.gradio.app/guides/getting-started-with-the-python-client). You can take a look at this [repository](https://github.com/Ifeanyi55/StoryMaker) to see how that can be implemented. 
 
-Over time, more R gradio app examples, as code, will be added to this repository to explore the versattilty and different use cases of gradio, all while coding in R. 
+Over time, more R gradio app examples, as code, will be added to this repository to explore the versatility and different use cases of gradio, all while coding in R. 
 
 If you would like to see an example of a gradio app built for a machine learning regression model, take a look inside the `Code` folder. Download the script and run it in your R editor or IDE. You may download the trained model on your computer in order to run the gradio app.
 
@@ -143,7 +143,7 @@ If you would like to see an example of a gradio app built for a machine learning
 If you would like to contribute to this repository, here are ways you can do that:
 - Raise an issue, if you find one
 - Share your R gradio projects
-- Suggest example gradio projects
+- Suggest example R gradio projects
 
 
 
