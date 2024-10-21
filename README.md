@@ -123,9 +123,71 @@ Building with gradio blocks is more advanced than building with a simple interfa
 If you are an R developer who is entirely new to gradio, it would be best to build a few applications with a simple interface before you venture into building with blocks. Nevertheless, if you want to learn more about gradio blocks, take a look [here](https://www.gradio.app/docs/gradio/blocks).
 
 ## **Deploying App** 🚀
-Gradio apps built in Python can be easily deployed on [Hugging Face](https://huggingface.co/) as a space and accessed via a dedicated url. Nevertheless, in R, the most plausible way to deploy a gradio app will be through [Docker](https://www.docker.com/). That's a to-do for this repo. 
+Gradio apps written in Python can be easily deployed on [Hugging Face](https://huggingface.co/) as a space and accessed via a dedicated url. In R, however, gradio apps can only be deployed using [Docker](https://www.docker.com/). 
 
-However, in the meantime, R gradio apps can be shared with colleagues and collaborators by exposing `localhost:4000` to the internet using [Ngrok](https://ngrok.com/). After downloading and setting up Ngrok on your machine, to share your gradio app, launch your application, then in your terminal run this:
+To deploy your R gradio app using Docker, first make sure you have Docker desktop installed on your computer. Then you will need to create a folder which will contain your gradio app script (something like "GradioApp.R"), an R script that installs [miniconda](https://docs.anaconda.com/miniconda/) and gradio using the reticulate R package (something like "InstallGradio.R"), and a Dockerfile. 
+
+The R script that installs miniconda and gradio can look something like this:
+```
+# InstallGradio.R
+
+if (!reticulate::py_available(initialize = FALSE)) {
+  # Install Miniconda if not already installed
+  reticulate::install_miniconda()
+}
+
+# Ensure that Python is available
+reticulate::py_config()
+
+# Now install Python packages via reticulate's interface
+reticulate::py_install("gradio",pip = TRUE)
+
+```
+Next, create a Dockerfile with the following content:
+```
+FROM rocker/r-ver:4.3.0
+
+ENV TZ=UTC
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libgit2-dev \
+    python3 \
+    python3-pip \
+    libpng-dev \
+    libjpeg-dev \
+    libtiff5-dev \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN R -e "install.packages(c('reticulate','glue'), repos = 'https://cloud.r-project.org')"
+
+WORKDIR /app
+COPY . /app
+
+RUN Rscript InstallGradio.R
+
+EXPOSE 4000
+
+CMD ["Rscript", "GradioApp.R"]
+
+```
+The above Dockerfile uses a base R image, and ensures that Python is installed in your container as well as reticulate and [glue](https://cran.r-project.org/web/packages/glue/readme/README.html) R packages used in building the gradio app.
+
+You can modify the above Dockerfile according to your need. For example, you can install additional R packages that are used in your gradio application. 
+
+Then very importantly, make sure to set the server name of your gradio app in `app$launch()` to `0.0.0.0` instead of `localhost`. This is essential in order for the Docker container to be able to run the gradio app.
+
+After all the above has been done, start the Docker desktop application. Then in your terminal, navigate to the folder containing the gradio app script, installation script, and Dockerfile, then run the following line of code:
+```
+docker build -t <name of your docker image> .
+```
+This will build your Docker image. This may take a little while to build. If all goes well, after the build is completed, you should see the image in your Docker desktop. You can then start the Docker container and access your gradio app in your browser.
+
+## **Sharing Gradio Apps with Ngrok**
+If you want to quickly share your R gradio app with colleagues and collaborators before deployment, you can do so by exposing `localhost:4000` to the internet using [Ngrok](https://ngrok.com/). After downloading and setting up Ngrok on your machine, to share your gradio app, launch your application, then in your terminal run this:
 
 ```
 ngrok http http://localhost:4000/
