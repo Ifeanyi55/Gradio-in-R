@@ -14,7 +14,7 @@ process_text <- function(text, uppercase = FALSE, reverse = FALSE) {
   return(result)
 }
 
-# build the Gradio interface with an accordion
+# build the gradio interface with an accordion
 app <- gr$Blocks()
 
 with(app, {
