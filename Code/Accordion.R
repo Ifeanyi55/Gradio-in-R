@@ -1,3 +1,8 @@
+library(reticulate)
+
+# import gradio
+gr <- import("gradio")
+
 process_text <- function(text, uppercase = FALSE, reverse = FALSE) {
   result <- text
   if (uppercase) {
