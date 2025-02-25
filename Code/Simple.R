@@ -1,7 +1,5 @@
 library(reticulate)
 
-# py_install("gradio",pip = TRUE)
-
 # import gradio
 gr <- import("gradio")
 
