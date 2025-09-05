@@ -1,3 +1,10 @@
+[![License](https://img.shields.io/github/license/Ifeanyi55/Gradio-in-R)](./LICENSE)
+[![Stars](https://img.shields.io/github/stars/Ifeanyi55/Gradio-in-R?style=social)](https://github.com/Ifeanyi55/Gradio-in-R/stargazers)
+[![Forks](https://img.shields.io/github/forks/Ifeanyi55/Gradio-in-R?style=social)](https://github.com/Ifeanyi55/Gradio-in-R/network/members)
+[![Issues](https://img.shields.io/github/issues/Ifeanyi55/Gradio-in-R)](https://github.com/Ifeanyi55/Gradio-in-R/issues)
+[![Last Commit](https://img.shields.io/github/last-commit/Ifeanyi55/Gradio-in-R)](https://github.com/Ifeanyi55/Gradio-in-R/commits/main)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/Ifeanyi55/Gradio-in-R)
+
 # Gradio-in-R 😎
 The goal of this repository is to show R users how to easily use [Gradio](https://www.gradio.app/docs) in their R projects. Gradio is a popular Python module that allows you to quickly turn your Python code into a web application, with an easy-to-use API. 
 
