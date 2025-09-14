@@ -211,7 +211,7 @@ If you would like to see an example of a gradio app built for a machine learning
 ## **Contributing**
 If you would like to contribute to this repository, here are ways you can do that:
 - Report a bug or recommend a feature by raising an issue.
-- You can contribute your R gradio projects by submitting a PR.
+- Contribute R gradio projects by submitting a PR.
 
 
 
